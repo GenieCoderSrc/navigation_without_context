@@ -1,7 +1,10 @@
 name: navigation_wihout_context
-description: "A new Flutter package project."
+description: "A simple Flutter package for displaying toast messages and snackbars with customizable options."
 version: 0.0.1
-homepage:
+homepage: https://github.com/GenieCoderSrc/navigation_wihout_context
+repository: https://github.com/GenieCoderSrc/navigation_wihout_context
+issue_tracker: https://github.com/GenieCoderSrc/navigation_wihout_context/issues
+
 
 environment:
   sdk: ^3.6.0
@@ -22,6 +25,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
 
+example:
+  path: example
   # To add assets to your package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
