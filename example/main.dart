@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigation_wihout_context/navigation_wihout_context.dart';
+import 'package:navigation_wihout_context/utils/app_navigator.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: AppRouter.navigatorKey,
+      navigatorKey: AppNavigator.navigationKey,
       title: 'Navigation Without Context Example',
       routes: {
         '/': (context) => HomePage(),
@@ -27,7 +28,8 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            AppRouter.pushNameRoute('/second', arguments: {'message': 'Hello from Home!'});
+            AppRouter.pushNameRoute('/second',
+                arguments: {'message': 'Hello from Home!'});
           },
           child: Text('Go to Second Page'),
         ),
@@ -39,7 +41,8 @@ class HomePage extends StatelessWidget {
 class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
     final message = args?['message'] ?? 'No message';
 
     return Scaffold(
