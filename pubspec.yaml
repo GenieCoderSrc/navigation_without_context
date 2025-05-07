@@ -1,6 +1,6 @@
 name: navigation_wihout_context
-description: "A simple Flutter package for displaying toast messages and snackbars with customizable options."
-version: 0.0.1
+description: "A Flutter package that enables global navigation without requiring BuildContext, using a clean abstraction and GetIt for dependency injection."
+version: 0.0.2
 homepage: https://github.com/GenieCoderSrc/navigation_wihout_context
 repository: https://github.com/GenieCoderSrc/navigation_wihout_context
 issue_tracker: https://github.com/GenieCoderSrc/navigation_wihout_context/issues
