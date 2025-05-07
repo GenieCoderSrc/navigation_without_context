@@ -27,7 +27,8 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            AppRouter.pushNameRoute('/second', arguments: {'message': 'Hello from Home!'});
+            AppRouter.pushNameRoute('/second',
+                arguments: {'message': 'Hello from Home!'});
           },
           child: Text('Go to Second Page'),
         ),
@@ -39,7 +40,8 @@ class HomePage extends StatelessWidget {
 class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
+    final args =
+        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
     final message = args?['message'] ?? 'No message';
 
     return Scaffold(
