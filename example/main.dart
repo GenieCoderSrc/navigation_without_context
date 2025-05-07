@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigation_wihout_context/navigation_wihout_context.dart';
+import 'package:navigation_wihout_context/utils/app_navigator.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: AppRouter.navigatorKey,
+      navigatorKey: AppNavigator.navigationKey,
       title: 'Navigation Without Context Example',
       routes: {
         '/': (context) => HomePage(),
