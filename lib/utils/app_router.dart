@@ -23,3 +23,4 @@ class AppRouter {
           ?.pushNamedAndRemoveUntil(route, (Route<dynamic> route) => false);
 }
 
+
