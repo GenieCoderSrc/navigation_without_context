@@ -22,3 +22,4 @@ class AppRouter {
       navigatorKey.currentState
           ?.pushNamedAndRemoveUntil(route, (Route<dynamic> route) => false);
 }
+
