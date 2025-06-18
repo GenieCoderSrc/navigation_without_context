@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'i_app_navigator.dart';
 
 class AppNavigator implements IAppNavigator {
-  static final GlobalKey<NavigatorState> navigationKey =
-      GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
+  @override
+  GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
   @override
   Future<T?> pushNamed<T extends Object?>(
     String routeName, {
     Object? args,
   }) async {
-    return navigationKey.currentState?.pushNamed<T>(
+    return navigatorKey.currentState?.pushNamed<T>(
       routeName,
       arguments: args,
     );
@@ -19,7 +21,7 @@ class AppNavigator implements IAppNavigator {
 
   @override
   Future<T?> push<T extends Object?>(Route<T> route) async {
-    return navigationKey.currentState?.push<T>(route);
+    return navigatorKey.currentState?.push<T>(route);
   }
 
   @override
@@ -28,7 +30,7 @@ class AppNavigator implements IAppNavigator {
     Object? args,
     TO? result,
   }) async {
-    return navigationKey.currentState?.pushReplacementNamed<T, TO>(
+    return navigatorKey.currentState?.pushReplacementNamed<T, TO>(
       routeName,
       arguments: args,
       result: result,
@@ -41,7 +43,7 @@ class AppNavigator implements IAppNavigator {
     Object? args,
     RoutePredicate? predicate,
   }) async {
-    return navigationKey.currentState?.pushNamedAndRemoveUntil<T>(
+    return navigatorKey.currentState?.pushNamedAndRemoveUntil<T>(
       routeName,
       predicate ?? (_) => false,
       arguments: args,
@@ -53,7 +55,7 @@ class AppNavigator implements IAppNavigator {
     Route<T> route, {
     RoutePredicate? predicate,
   }) async {
-    return navigationKey.currentState?.pushAndRemoveUntil<T>(
+    return navigatorKey.currentState?.pushAndRemoveUntil<T>(
       route,
       predicate ?? (_) => false,
     );
@@ -61,20 +63,20 @@ class AppNavigator implements IAppNavigator {
 
   @override
   Future<bool?> maybePop<T extends Object?>([T? result]) async {
-    return navigationKey.currentState?.maybePop<T>(result);
+    return navigatorKey.currentState?.maybePop<T>(result);
   }
 
   @override
-  bool canPop() => navigationKey.currentState!.canPop();
+  bool canPop() => navigatorKey.currentState!.canPop();
 
   @override
   void goBack<T extends Object?>({T? result}) {
-    navigationKey.currentState?.pop<T>(result);
+    navigatorKey.currentState?.pop<T>(result);
   }
 
   @override
   void popUntil(String route) {
-    navigationKey.currentState?.popUntil(ModalRoute.withName(route));
+    navigatorKey.currentState?.popUntil(ModalRoute.withName(route));
   }
 
   @override

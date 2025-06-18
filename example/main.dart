@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_it_di_global_variable/get_it_di.dart';
-import 'package:navigation_wihout_context/di/register_navigator_get_it_di.dart';
 import 'package:navigation_wihout_context/navigation_wihout_context.dart';
-import 'package:navigation_wihout_context/utils/app_navigator.dart';
 
 void main() {
   registerNavigatorGetItDi();
@@ -10,10 +7,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: AppNavigator.navigationKey,
+      navigatorKey: navigator.navigatorKey,
       title: 'Navigation Example',
       initialRoute: '/',
       routes: {
@@ -25,6 +24,8 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +41,8 @@ class HomePage extends StatelessWidget {
 }
 
 class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

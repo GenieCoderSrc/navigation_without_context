@@ -1,4 +1,4 @@
-# navigation\_wihout\_context
+# navigation_wihout_context
 
 A Flutter package that allows navigation without needing a `BuildContext`, built on top of `GetIt` and Flutter's navigation system.
 
@@ -45,11 +45,11 @@ void main() {
 }
 ```
 
-### Step 2: Add `navigationKey` to MaterialApp
+### Step 2: Add `navigatorKey` to MaterialApp
 
 ```dart
 MaterialApp(
-  navigatorKey: AppNavigator.navigationKey,
+  navigatorKey: navigator.navigatorKey,
   // other properties...
 )
 ```
