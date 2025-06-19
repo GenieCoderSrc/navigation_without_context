@@ -3,14 +3,12 @@
 All notable changes to this project will be documented in this file.
 
 ## 0.0.3
-
 ### Added
 - Added global navigator key setup with `navigatorKey`. 
 - Global `navigator` instance to perform navigation anywhere. 
 
 
 ## 0.0.2
-
 ### Added
 * `AppNavigator` implementation for navigation without context.
 * `IAppNavigator` interface to abstract navigation API.

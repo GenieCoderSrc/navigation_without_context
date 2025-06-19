@@ -1,4 +1,4 @@
-# navigation_wihout_context
+# navigation_without_context
 
 A Flutter package that allows navigation without needing a `BuildContext`, built on top of `GetIt` and Flutter's navigation system.
 
@@ -19,7 +19,7 @@ Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  navigation_wihout_context: <latest_version>
+  navigation_without_context: <latest_version>
 ```
 
 Then run:
@@ -31,7 +31,7 @@ flutter pub get
 ### Import
 
 ```dart
-import 'package:navigation_wihout_context/navigation_wihout_context.dart';
+import 'package:navigation_without_context/navigation_without_context.dart';
 ```
 
 ## Usage
