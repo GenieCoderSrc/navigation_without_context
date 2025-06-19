@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_wihout_context/navigation_without_context.dart';
+import 'package:navigation_without_context/navigation_without_context.dart';
 
 void main() {
   registerNavigatorGetItDi();
