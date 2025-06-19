@@ -1,88 +1,100 @@
-# navigation_wihout_context
+# ⚠️ Deprecated: navigation\_wihout\_context
 
-A Flutter package that allows navigation without needing a `BuildContext`, built on top of `GetIt` and Flutter's navigation system.
+> **This package is now deprecated.**
+> Please use the new package: [**navigation\_without\_context**](https://pub.dev/packages/navigation_without_context)
 
-## Features
+---
 
-* Navigate using route names or `Route` objects
-* Replace routes or remove routes until a condition is met
-* Check if navigation stack can pop
-* Go back with or without a result
-* Pop until a specific route
-* Access current `RouteSettings`
+A lightweight Flutter package that simplifies navigation without requiring `BuildContext`. Easily push, pop, replace, or reset navigation stacks using a global navigator key.
 
-## Getting Started
+---
 
-### Installation
+## 🚨 Deprecated Notice
 
-Add this to your `pubspec.yaml`:
+The `navigation_wihout_context` package has been **renamed** due to a typo in the package name.
+
+✅ Please switch to using the correctly named package:
 
 ```yaml
 dependencies:
-  navigation_wihout_context: <latest_version>
+  navigation_without_context: ^0.0.1
 ```
 
-Then run:
+GitHub: [https://github.com/GenieCoderSrc/navigation\_without\_context](https://github.com/GenieCoderSrc/navigation_without_context)
+Pub: [https://pub.dev/packages/navigation\_without\_context](https://pub.dev/packages/navigation_without_context)
 
-```bash
-flutter pub get
+---
+
+## Legacy Docs (Deprecated)
+
+### Features
+
+* Navigate between routes without needing context.
+* Push named routes with or without arguments.
+* Replace routes or remove all previous ones.
+* Useful for service-based or ViewModel-driven architecture.
+
+### Getting Started
+
+```yaml
+dependencies:
+  navigation_wihout_context: ^0.0.1
 ```
 
-### Import
+### Usage
+
+1. Set up the `navigatorKey` in your `MaterialApp`:
 
 ```dart
+import 'package:flutter/material.dart';
 import 'package:navigation_wihout_context/navigation_wihout_context.dart';
-```
 
-## Usage
-
-### Step 1: Register the Navigator
-
-```dart
 void main() {
-  registerNavigatorGetItDi();
   runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      navigatorKey: AppRouter.navigatorKey,
+      routes: {
+        '/': (context) => HomePage(),
+        '/second': (context) => SecondPage(),
+      },
+    );
+  }
 }
 ```
 
-### Step 2: Add `navigatorKey` to MaterialApp
+2. Navigate without `BuildContext`:
 
 ```dart
-MaterialApp(
-  navigatorKey: navigator.navigatorKey,
-  // other properties...
-)
+AppRouter.pushNameRoute('/second', arguments: {'message': 'Hello'});
+AppRouter.popRoute();
+AppRouter.pushReplacementRoute('/second');
+AppRouter.pushNamedAndRemoveUntil('/second');
+AppRouter.popAndPushNamed('/second');
 ```
 
-### Step 3: Use Anywhere
+### API
 
-```dart
-navigator.pushNamed('/home');
+* `AppRouter.navigatorKey`: Global navigator key for use in `MaterialApp`.
+* `pushNameRoute(String route, {dynamic arguments})`
+* `popRoute()`
+* `pushReplacementRoute(String route, {Object? arguments})`
+* `pushNamedAndRemoveUntil(String route, {Object? arguments})`
+* `popAndPushNamed(String route, {Object? arguments})`
 
-navigator.goBack();
-```
-
-## API
-
-The `IAppNavigator` interface includes:
-
-```dart
-Future<T?> pushNamed<T>(String routeName, {Object? args});
-Future<T?> push<T>(Route<T> route);
-Future<T?> pushReplacementNamed<T, TO>(String routeName, {Object? args, TO? result});
-Future<T?> pushNamedAndRemoveUntil<T>(String routeName, {Object? args, RoutePredicate? predicate});
-Future<T?> pushAndRemoveUntil<T>(Route<T> route, {RoutePredicate? predicate});
-Future<bool?> maybePop<T>([T? result]);
-bool canPop();
-void goBack<T>({T? result});
-void popUntil(String route);
-RouteSettings? pageSettings(BuildContext context);
-```
-
-## Dependencies
-
-* `get_it_di_global_variable`: Used for dependency injection.
+---
 
 ## License
 
-MIT
+MIT License
+
+## Contributions
+
+This package is no longer maintained.
+Please contribute or report issues on the new package:
+
+🔗 [navigation\_without\_context GitHub](https://github.com/GenieCoderSrc/navigation_without_context)
