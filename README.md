@@ -17,7 +17,7 @@ The `navigation_wihout_context` package has been **renamed** due to a typo in th
 
 ```yaml
 dependencies:
-  navigation_without_context: ^0.0.1
+  navigation_without_context: ^0.0.4
 ```
 
 GitHub: [https://github.com/GenieCoderSrc/navigation\_without\_context](https://github.com/GenieCoderSrc/navigation_without_context)
