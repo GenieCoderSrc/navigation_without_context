@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:navigation_wihout_context/navigation_wihout_context.dart';
-import 'package:navigation_wihout_context/utils/app_navigator.dart';
 
 void main() {
+  registerNavigatorGetItDi();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: AppNavigator.navigationKey,
-      title: 'Navigation Without Context Example',
+      navigatorKey: navigator.navigatorKey,
+      title: 'Navigation Example',
+      initialRoute: '/',
       routes: {
         '/': (context) => HomePage(),
         '/second': (context) => SecondPage(),
@@ -21,16 +24,15 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Home Page')),
       body: Center(
         child: ElevatedButton(
-          onPressed: () {
-            AppRouter.pushNameRoute('/second',
-                arguments: {'message': 'Hello from Home!'});
-          },
+          onPressed: () => navigator.pushNamed('/second'),
           child: Text('Go to Second Page'),
         ),
       ),
@@ -39,27 +41,16 @@ class HomePage extends StatelessWidget {
 }
 
 class SecondPage extends StatelessWidget {
+  const SecondPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final args =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>?;
-    final message = args?['message'] ?? 'No message';
-
     return Scaffold(
       appBar: AppBar(title: Text('Second Page')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(message),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                AppRouter.popRoute();
-              },
-              child: Text('Go Back'),
-            ),
-          ],
+        child: ElevatedButton(
+          onPressed: () => navigator.goBack(),
+          child: Text('Go Back'),
         ),
       ),
     );

@@ -1,75 +1,88 @@
 # navigation_wihout_context
 
-A lightweight Flutter package that simplifies navigation without requiring `BuildContext`. Easily push, pop, replace, or reset navigation stacks using a global navigator key.
+A Flutter package that allows navigation without needing a `BuildContext`, built on top of `GetIt` and Flutter's navigation system.
 
 ## Features
 
-- Navigate between routes without needing context.
-- Push named routes with or without arguments.
-- Replace routes or remove all previous ones.
-- Useful for service-based or ViewModel-driven architecture.
+* Navigate using route names or `Route` objects
+* Replace routes or remove routes until a condition is met
+* Check if navigation stack can pop
+* Go back with or without a result
+* Pop until a specific route
+* Access current `RouteSettings`
 
 ## Getting Started
 
-Add the package to your `pubspec.yaml`:
+### Installation
+
+Add this to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  navigation_wihout_context: ^0.0.1
+  navigation_wihout_context: <latest_version>
+```
+
+Then run:
+
+```bash
+flutter pub get
+```
+
+### Import
+
+```dart
+import 'package:navigation_wihout_context/navigation_wihout_context.dart';
 ```
 
 ## Usage
 
-1. Set up the `navigatorKey` in your `MaterialApp`:
+### Step 1: Register the Navigator
 
 ```dart
-import 'package:flutter/material.dart';
-import 'package:navigation_wihout_context/navigation_wihout_context.dart';
-
 void main() {
+  registerNavigatorGetItDi();
   runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: AppRouter.navigatorKey,
-      routes: {
-        '/': (context) => HomePage(),
-        '/second': (context) => SecondPage(),
-      },
-    );
-  }
 }
 ```
 
-2. Navigate without `BuildContext`:
+### Step 2: Add `navigatorKey` to MaterialApp
 
 ```dart
-AppRouter.pushNameRoute('/second', arguments: {'message': 'Hello'});
-AppRouter.popRoute();
-AppRouter.pushReplacementRoute('/second');
-AppRouter.pushNamedAndRemoveUntil('/second');
-AppRouter.popAndPushNamed('/second');
+MaterialApp(
+  navigatorKey: navigator.navigatorKey,
+  // other properties...
+)
+```
+
+### Step 3: Use Anywhere
+
+```dart
+navigator.pushNamed('/home');
+
+navigator.goBack();
 ```
 
 ## API
 
-- `AppRouter.navigatorKey`: Global navigator key for use in `MaterialApp`.
-- `pushNameRoute(String route, {dynamic arguments})`
-- `popRoute()`
-- `pushReplacementRoute(String route, {Object? arguments})`
-- `pushNamedAndRemoveUntil(String route, {Object? arguments})`
-- `popAndPushNamed(String route, {Object? arguments})`
+The `IAppNavigator` interface includes:
+
+```dart
+Future<T?> pushNamed<T>(String routeName, {Object? args});
+Future<T?> push<T>(Route<T> route);
+Future<T?> pushReplacementNamed<T, TO>(String routeName, {Object? args, TO? result});
+Future<T?> pushNamedAndRemoveUntil<T>(String routeName, {Object? args, RoutePredicate? predicate});
+Future<T?> pushAndRemoveUntil<T>(Route<T> route, {RoutePredicate? predicate});
+Future<bool?> maybePop<T>([T? result]);
+bool canPop();
+void goBack<T>({T? result});
+void popUntil(String route);
+RouteSettings? pageSettings(BuildContext context);
+```
+
+## Dependencies
+
+* `get_it_di_global_variable`: Used for dependency injection.
 
 ## License
 
-MIT License
-
-## Contributions
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check [issues page](https://github.com/GenieCoderSrc/navigation_wihout_context).
-
+MIT
