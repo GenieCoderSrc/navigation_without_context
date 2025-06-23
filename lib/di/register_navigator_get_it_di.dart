@@ -5,5 +5,3 @@ import 'package:navigation_without_context/utils/i_app_navigator.dart';
 void registerNavigatorGetItDi() {
   sl.registerLazySingleton<IAppNavigator>(() => AppNavigator());
 }
-
-final navigator = sl<IAppNavigator>();

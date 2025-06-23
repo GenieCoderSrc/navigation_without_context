@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.0.3+1
+### Added
+- Separated `navigator` instance. 
+
+
 ## 0.0.3
 ### Added
 - Added global navigator key setup with `navigatorKey`. 
