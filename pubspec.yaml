@@ -14,7 +14,8 @@ dependencies:
   flutter:
     sdk: flutter
     
-  get_it_di_global_variable: ^0.0.4
+  get_it_di_global_variable:
+    path: ../get_it_di_global_variable
 
 dev_dependencies:
   flutter_test:
