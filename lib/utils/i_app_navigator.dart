@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class IAppNavigator {
-
   GlobalKey<NavigatorState> get navigatorKey;
-
 
   Future<T?> pushNamed<T extends Object?>(
     String routeName, {
