@@ -13,10 +13,7 @@ class AppNavigator implements IAppNavigator {
     String routeName, {
     Object? args,
   }) async {
-    return navigatorKey.currentState?.pushNamed<T>(
-      routeName,
-      arguments: args,
-    );
+    return navigatorKey.currentState?.pushNamed<T>(routeName, arguments: args);
   }
 
   @override
