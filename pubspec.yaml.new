@@ -1,0 +1,12 @@
+name: navigation_without_context
+description: "A Flutter package that enables global navigation without requiring BuildContext, using a clean abstraction and GetIt for dependency injection."
+version: 0.0.5
+homepage: https://github.com/GenieCoderSrc/navigation_without_context
+repository: https://github.com/GenieCoderSrc/navigation_without_context
+issue_tracker: https://github.com/GenieCoderSrc/navigation_without_context/issues
+
+
+environment:
+  sdk: \x27>=3.6.0 <4.0.0\x27
+  resolution: workspace
+    flutter: ">=3.0.0"
