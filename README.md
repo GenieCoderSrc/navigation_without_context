@@ -18,6 +18,8 @@ A Flutter package that allows navigation without needing a `BuildContext`, built
 Add this to your `pubspec.yaml`:
 
 ```yaml
+resolution: workspace
+
 dependencies:
   navigation_without_context: <latest_version>
 ```
